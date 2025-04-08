@@ -11,6 +11,7 @@ const buttonThree = document.getElementById('three');
 const buttonZero = document.getElementById('zero');
 const buttonPlus = document.getElementById('plus');
 const buttonMinus = document.getElementById('minus');
+const buttonDecimal = document.getElementById('decimal');
 
 // Operators
 const buttonMultiply = document.getElementById('multiply');
@@ -38,6 +39,14 @@ buttonOne.addEventListener('click', () => appendNumber('1'));
 buttonTwo.addEventListener('click', () => appendNumber('2'));
 buttonThree.addEventListener('click', () => appendNumber('3'));
 buttonZero.addEventListener('click', () => appendNumber('0'));
+buttonDecimal.addEventListener('click', () => {
+    if(currentInput.slice(-1) !== '.') {
+        appendNumber('.');
+    }
+    else {
+        display.value = currentInput;
+    }
+});
 
 // Event Listeners for operator buttons
 buttonPlus.addEventListener('click', () => appendNumber('+'));
