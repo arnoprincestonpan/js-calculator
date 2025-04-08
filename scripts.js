@@ -49,12 +49,25 @@ buttonDecimal.addEventListener('click', () => {
 });
 
 // Event Listeners for operator buttons
-buttonPlus.addEventListener('click', () => appendNumber('+'));
+buttonPlus.addEventListener('click', () => {
+    if (currentInput.length > 0 && !['+', '-', '*', '/'].includes(currentInput.slice(-1))) {
+        appendNumber('+');
+    } else {
+        display.value = currentInput;
+    }
+});
 buttonMinus.addEventListener('click', () => appendNumber('-'));
 buttonMultiply.addEventListener('click', () => appendNumber('*'));
 buttonDivide.addEventListener('click', () => appendNumber('/'));
 
 buttonEqual.addEventListener('click', () => {
+    if(currentInput.slice(-1) === '+' || currentInput.slice(-1) === '-' || currentInput.slice(-1) === '*' || currentInput.slice(-1) === '/') {
+        currentInput = currentInput.slice(0, -1);
+    }
+    if (currentInput.length === 0) {
+        display.value = '';
+        return;
+    }
   try {
     const result = eval(currentInput);
     displayValue = result.toString();
