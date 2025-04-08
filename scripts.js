@@ -16,7 +16,6 @@ const buttonMinus = document.getElementById('minus');
 const buttonMultiply = document.getElementById('multiply');
 const buttonDivide = document.getElementById('divide');
 const buttonEqual = document.getElementById('equals');
-const buttonClear = document.getElementById('clear');
 
 // Display
 const display = document.getElementById('display');
@@ -31,6 +30,30 @@ buttonSeven.addEventListener('click', () => appendNumber('7'));
 buttonEight.addEventListener('click', () => appendNumber('8'));
 buttonNine.addEventListener('click', () => appendNumber('9'));
 buttonFour.addEventListener('click', () => appendNumber('4'));  
+buttonFive.addEventListener('click', () => appendNumber('5'));
+buttonSix.addEventListener('click', () => appendNumber('6'));
+buttonOne.addEventListener('click', () => appendNumber('1'));
+buttonTwo.addEventListener('click', () => appendNumber('2'));
+buttonThree.addEventListener('click', () => appendNumber('3'));
+buttonZero.addEventListener('click', () => appendNumber('0'));
+
+const removeLastCharacter = () => {
+  if (currentInput.length > 0) {
+    currentInput = currentInput.slice(0, -1);
+    displayValue = currentInput;
+    display.value = displayValue;
+  }
+}
+
+clearLine.addEventListener('click', removeLastCharacter);
+
+const clearDisplay = () => {
+  currentInput = '';
+  displayValue = '';
+  display.value = displayValue;
+}
+
+clear.addEventListener('click', clearDisplay);
 
 const appendNumber = (number) => {
   if (currentInput.length < characterLimit) {
